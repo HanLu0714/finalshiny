@@ -37,13 +37,13 @@ ui <- navbarPage(
     tabPanel("Los Angeles",
              div("This graph show that numbers of tweets based on different period of time"),
             
-             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is"),
+             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is the moment for an hour"),
              div("we can see that most tweets are clustered at 18:00PM"),
              splitLayout(img(src="hourLA.png",height = "500",width="600"))),
     tabPanel("Chicago", 
              div("This graph show that numbers of tweets based on different period of time"),
              
-             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is"),
+             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is the moment for an hour"),
              div("Compared to the graph of Los Angeles, more tweets after 18:00PM"),
              splitLayout(img(src="hourC.png",height = "500",width="600"))),
     tabPanel("Boston",
