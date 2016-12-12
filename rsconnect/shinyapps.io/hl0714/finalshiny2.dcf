@@ -1,10 +1,10 @@
 name: finalshiny2
-title: finalshiny2
+title: finalshiny
 account: hl0714
 server: shinyapps.io
 appId: 144090
-bundleId: 644688
+bundleId: 644794
 url: https://hl0714.shinyapps.io/finalshiny2/
-when: 1481515149.36024
+when: 1481522094.98068
 asMultiple: FALSE
 asStatic: FALSE

@@ -97,56 +97,6 @@ map.data <- get_map("Los Angeles",zoom=8)
 ggmap(map.data)+ geom_point(data=points,
                             aes(x=x,y=y),size=1,
                             color="darkblue")
-##### 
-pos <- scan('positive.txt',what='character',comment.char=';')
-neg <- scan('negative.txt',what='character',comment.char=';')
-t1 <- tweets.df$text
-
-p <- function(t,positive){
-  lat = vector(mode = "numeric",length=0)
-  lon = vector(mode = "numeric",length=0)
-  
-  for (i in (1:length(positive))){
-    for (j in (1:length(t$text))){
-         l = length(grep(positive[i], t$text[j], ignore.case=TRUE))
-         if(l!=0){
-           lat = c(lat,t$place_lat[j])
-           lon = c(lon,t$place_lon[j])
-         }
-      
-       }
-  }
-  c = cbind(lat,lon)
-    
-  return(c)
-}
-
-
-d <- tweets.df[grep("Trump", tweets.df$text, ignore.case=TRUE),]
-
-
-
-
-p1<- p(d,pos)
-p1 <- as.data.frame(p1)
-View(p1)
-n1 <- n(tweets.df,neg)
-n1 <- as.data.frame(n1)
-
-
-newpoint <- data.frame(x=as.numeric(d$place_lon),
-                     y=as.numeric(d$place_lat))
-
-map.data <- get_map("Los Angeles",zoom=8) 
-ggmap(map.data)+ geom_point(data=newpoint,aes(x=x,y=y),size=1,
-                                            color="darkblue") +
-  geom_point(data=p1,
-             aes(x=as.numeric(p1$lon),y=as.numeric(p1$lat)),size=1,
-             color="red") 
-                           
-  
-  
-
 
 #####Distribution of words per tweet
 words_list = strsplit(tweets.df$text, " ")
@@ -272,6 +222,7 @@ ggplot(sent_df, aes(x=polarity)) +
 txt1 <- gsub(" (the|to|is|its|on|and|of|in|for|a|after|from|but|that|about|was|you|it|i|with|if|so|can|this|where) "," ",txt1)
 
 require(tm)
+
 require(wordcloud)
 require(RColorBrewer)
 ap.corpus <- Corpus(DataframeSource((data.frame(as.character(txt1)))))
@@ -281,7 +232,7 @@ ap.tdm <- TermDocumentMatrix(ap.corpus)
 ap.m <- as.matrix(ap.tdm) 
 ap.v <- sort(rowSums(ap.m),decreasing=TRUE) 
 ap.d <- data.frame(word = names(ap.v),freq=ap.v)
-wordcloud(ap.d$word,ap.d$freq, scale=c(8,.2),min.freq=3,max.words=200, random.order=FALSE, rot.per=.15, colors=brewer.pal(8,"Dark2"))
+wordcloud(ap.d$word,ap.d$freq, scale=c(8,.2),min.freq=3,max.words=100, random.order=FALSE, rot.per=.15, colors=brewer.pal(8,"Dark2"))
 
 
 
@@ -303,46 +254,8 @@ ggmap(map.data2)+ geom_point(data=points5,
                             aes(x=x,y=y),size=1,
                             color="darkblue")
 
-#########
-pos <- scan('positive.txt',what='character',comment.char=';')
-neg <- scan('negative.txt',what='character',comment.char=';')
-t5 <- tweets5.df$text
-
-p <- function(t,positive){
-  lat = vector(mode = "numeric",length=0)
-  lon = vector(mode = "numeric",length=0)
-  #count = 0
-  for (i in (1:length(positive))){
-    for (j in (1:length(t$text))){
-      l = length(grep(positive[i], t$text[j], ignore.case=TRUE))
-      if(l!=0){
-        lat = c(lat,t$place_lat[j])
-        lon = c(lon,t$place_lon[j])
-      }
-      
-    }
-  }
-  c = cbind(lat,lon)
-  
-  return(c)
-}
 
 
-
-p1<- p(tweets5.df,pos)
-p1 <- as.data.frame(p1)
-
-
-
-
-
-
-map.data <- get_map("Chicago",zoom=9) 
-ggmap(map.data)+ geom_point(data=points,aes(x=x,y=y),size=1,
-                            color="darkblue")+
-  geom_point(data=p1,
-             aes(x=as.numeric(p1$lon),y=as.numeric(p1$lat)),size=1,
-             color="red") 
 
 #######Distribution of words per tweet
 words_list = strsplit(tweets5.df$text, " ")
@@ -504,7 +417,7 @@ ap.tdm <- TermDocumentMatrix(ap.corpus)
 ap.m <- as.matrix(ap.tdm) 
 ap.v <- sort(rowSums(ap.m),decreasing=TRUE) 
 ap.d <- data.frame(word = names(ap.v),freq=ap.v)
-wordcloud(ap.d$word,ap.d$freq, scale=c(8,.2),min.freq=3,max.words=300, random.order=FALSE, rot.per=.15, colors=brewer.pal(8,"Dark2"))
+wordcloud(ap.d$word,ap.d$freq, scale=c(8,.2),min.freq=3,max.words=100, random.order=FALSE, rot.per=.15, colors=brewer.pal(8,"Dark2"))
 
 
 

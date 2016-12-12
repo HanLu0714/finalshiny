@@ -37,13 +37,13 @@ ui <- navbarPage(
     tabPanel("Los Angeles",
              div("This graph show that numbers of tweets based on different period of time"),
             
-             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is"),
+             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is the moment of an hour"),
              div("we can see that most tweets are clustered at 18:00PM"),
              splitLayout(img(src="hourLA.png",height = "500",width="600"))),
     tabPanel("Chicago", 
              div("This graph show that numbers of tweets based on different period of time"),
              
-             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is"),
+             div("The y-axis of the histogram is numbers of tweets, and the x-axis of the histogram is the moment of an hour"),
              div("Compared to the graph of Los Angeles, more tweets after 18:00PM"),
              splitLayout(img(src="hourC.png",height = "500",width="600"))),
     tabPanel("Boston",
@@ -76,17 +76,18 @@ ui <- navbarPage(
   navbarMenu(
     title = "Polarity",
     tabPanel("Los Angeles",
-             div("According to this graph, we can see that there are approximate 2500 users hold neutral attribute to Trump, a litte bit less than 3500 users hold positive attribute to Trump and a little bit more than 1000 users hold negative attributes to Trump among 7000 Tweets that we mine"),
+             div("'Polarity'is a kind of graph that reflects users' attitude toward Trump based on 'bayes' algorithm"),
+             div("According to this graph reflects the attitude of users in Los Angeles, we can see that there are approximate 2500 users hold neutral attribute to Trump, a litte bit less than 3500 users hold positive attribute to Trump and a little bit more than 1000 users hold negative attributes to Trump among 7000 Tweets that we mine"),
              
              
              
              splitLayout(img(src="polarityLA.png",height = "500",width="600"))),
     tabPanel("Chicago", 
-             div("According to this graph, we can see that there are a little bit more than 3000 users hold neutral attribute to Trump, approximate 2600 users hold positive attribute to Trump and a little bit more than 1000 users hold negative attributes to Trump among 7000 Tweets that we mine"),
+             div("According to this graph reflects the attitude of users in Chicago, we can see that there are a little bit more than 3000 users hold neutral attribute to Trump, approximate 2600 users hold positive attribute to Trump and a little bit more than 1000 users hold negative attributes to Trump among 7000 Tweets that we mine"),
              
              splitLayout(img(src="polarityDC.png",height = "500",width="600"))),
     tabPanel("Boston",
-             div("According to this graph, we can see that there are approximate 1500 users hold neutral attribute to Trump, more than 3500 users hold positive attribute to Trump and 1500 users hold negative attributes to Trump among 7000 Tweets that we mine"),
+             div("According to this graph reflects the attitude of users in Boston, we can see that there are approximate 1500 users hold neutral attribute to Trump, more than 3500 users hold positive attribute to Trump and 1500 users hold negative attributes to Trump among 7000 Tweets that we mine"),
              
              splitLayout(img(src="polarityB.png",height="600",width="600")))
   ),
@@ -94,6 +95,8 @@ ui <- navbarPage(
   navbarMenu(
     title = "Word Cloud",
     tabPanel("Los Angeles",
+             div("this is a separated wordcloud for tweets mentioned Trump around Los Angeles"),
+             div("We found that the most frequently words are Russia, devastating, etc.")
              splitLayout(img(src="wordcloudLA.png",height="397",width="428"))),
     tabPanel("Chicago",
              splitLayout(img(src="wordcloudC.png",height="349",width="438"))),
